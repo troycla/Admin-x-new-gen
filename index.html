@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #timer {
+            font-size: 24px;
+            color:red;
+        }
+    </style>
+</head>
+<body bgcolor="black">
+    <div id="timer">Loading...</div>
+
+    <script>
+        
+        const waitTimeInSeconds = 5;
+
+        function updateTimer(seconds) {
+            document.getElementById('timer').innerText = `Loading... ${seconds}s`;
+        }
+
+        
+        function redirectToLink() {
+            window.location.href = 'https://www.example.com';
+        }
+
+       
+        let countdown = waitTimeInSeconds;
+        updateTimer(countdown);
+
+        const countdownInterval = setInterval(() => {
+            countdown--;
+            updateTimer(countdown);
+
+
+            if (countdown <= 0) {
+                clearInterval(countdownInterval);
+                redirectToLink();
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
